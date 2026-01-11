@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8" />
+  <title>ZAYRA AI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      background: radial-gradient(circle at top, #0f172a, #020617);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    header {
+      padding: 15px;
+      text-align: center;
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 22px;
+      letter-spacing: 2px;
+    }
+
+    header span {
+      color: #38bdf8;
+      font-size: 13px;
+    }
+
+    .chat-box {
+      flex: 1;
+      padding: 15px;
+      overflow-y: auto;
+    }
+
+    .msg {
+      max-width: 80%;
+      padding: 12px 14px;
+      margin-bottom: 10px;
+      border-radius: 14px;
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    .user {
+      background: linear-gradient(135deg, #2563eb, #38bdf8);
+      margin-left: auto;
+      text-align: right;
+    }
+
+    .ai {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .input-area {
+      display: flex;
+      padding: 10px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      background: rgba(0,0,0,0.4);
+    }
+
+    input {
+      flex: 1;
+      padding: 12px;
+      border-radius: 10px;
+      border: none;
+      outline: none;
+      font-size: 14px;
+    }
+
+    button {
+      margin-left: 10px;
+      padding: 12px 18px;
+      border-radius: 10px;
+      border: none;
+      background: #38bdf8;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>ZAYRA</h1>
+  <span>عقل رقمي خاص – Digital Private Mind</span>
+</header>
+
+<div class="chat-box" id="chatBox">
+  <div class="msg ai">مرحبًا 👋 أنا ZAYRA، كيف أستطيع مساعدتك اليوم؟</div>
+</div>
+
+<div class="input-area">
+  <input type="text" id="userInput" placeholder="اكتب رسالتك..." />
+  <button onclick="sendMessage()">إرسال</button>
+</div>
+
+<script>
+  function sendMessage() {
+    const input = document.getElementById("userInput");
+    const chat = document.getElementById("chatBox");
+    const text = input.value.trim();
+
+    if (!text) return;
+
+    // رسالة المستخدم
+    const userMsg = document.createElement("div");
+    userMsg.className = "msg user";
+    userMsg.innerText = text;
+    chat.appendChild(userMsg);
+
+    input.value = "";
+    chat.scrollTop = chat.scrollHeight;
+
+    // رد مؤقت من ZAYRA
+    setTimeout(() => {
+      const aiMsg = document.createElement("div");
+      aiMsg.className = "msg ai";
+      aiMsg.innerText = "🧠 أفكر... (قريبًا سأكون أذكى من هذا الرد 😏)";
+      chat.appendChild(aiMsg);
+      chat.scrollTop = chat.scrollHeight;
+    }, 600);
+  }
+</script>
+
+</body>
+</html>
